@@ -1,18 +1,24 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { string } from "yup";
+import { UserMovies } from "./UserMovies";
 
-@Entity()
+@Entity("users")
 export class User {
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column({ nullable: false })
+  name: string;
 
-    @Column()
-    firstName: string;
+  @Column({ unique: true, nullable: false })
+  email: string;
 
-    @Column()
-    lastName: string;
+  @Column({ nullable: false })
+  password: string;
 
-    @Column()
-    age: number;
+  @Column({ default: false })
+  isAdm: boolean;
 
+  @OneToMany(() => UserMovies, (userMovies) => userMovies.user)
+  userMovies: UserMovies[];
 }

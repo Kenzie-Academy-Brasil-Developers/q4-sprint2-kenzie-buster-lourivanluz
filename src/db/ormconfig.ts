@@ -4,10 +4,6 @@ import path from "path";
 
 dotenv.config();
 
-/* POSTGRES_DB= db_buster
-POSTGRES_PASSWORD= 5432
-PGPORT= 5432 */
-
 const dbConfig = {
   type: "postgres",
   host: "localhost",
