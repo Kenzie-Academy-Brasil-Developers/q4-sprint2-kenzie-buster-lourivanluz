@@ -19,6 +19,20 @@ class MovieRepo implements IMovieRepo {
     const [movie] = await this.ormRepo.find({ id: id });
     return movie;
   };
+  getStockByMovieId = async (id: string) => {
+    const [stock] = await this.ormRepo.find({
+      where: { id: id },
+      relations: ["stock"],
+    });
+    return stock;
+  };
+
+  getMovieAndStock = async () => {
+    const result = await this.ormRepo.find({
+      relations: ["stock"],
+    });
+    return result;
+  };
 }
 
 export { MovieRepo };

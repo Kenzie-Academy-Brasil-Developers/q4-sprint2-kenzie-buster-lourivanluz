@@ -1,3 +1,7 @@
-import { createDvdsController } from "./dvds.controller";
+import {
+  createDvdsController,
+  getDvdController,
+  buyDvdController,
+} from "./dvds.controller";
 
-export { createDvdsController };
+export { createDvdsController, getDvdController, buyDvdController };

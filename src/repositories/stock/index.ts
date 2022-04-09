@@ -19,6 +19,19 @@ class StockRepo implements IStockRepo {
     const [stock] = await this.ormRepo.find({ id: id });
     return stock;
   };
+
+  handleStock = async (quantity: number, stockid: string) => {
+    const stock = await this.getStockById(stockid);
+    const newQuantity = stock.quantity - quantity;
+    if (newQuantity >= 0) {
+      stock.quantity = newQuantity;
+      this.save(stock);
+      return stock.price * quantity;
+    }
+    return {
+      error: `current stock: ${stock.quantity}, received demand ${quantity}`,
+    };
+  };
 }
 
 export { StockRepo };

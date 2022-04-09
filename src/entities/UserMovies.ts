@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { IUser } from "../repositories/user/interface";
 import { Movie } from "./Movie";
 import { User } from "./User";
 
@@ -14,7 +15,7 @@ export class UserMovies {
   paid: boolean;
 
   @ManyToOne(() => User, (user) => user.userMovies)
-  user: User;
+  user: IUser;
 
   @ManyToOne(() => Movie, (movie) => movie.userMovies)
   movies: Movie;

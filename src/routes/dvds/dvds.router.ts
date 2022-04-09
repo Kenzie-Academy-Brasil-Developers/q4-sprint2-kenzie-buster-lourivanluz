@@ -1,11 +1,13 @@
 import { Request, Response, Router } from "express";
-import { createDvdsController } from "../../controller";
-import validateBody from "../../middlewares/validates/body.validate";
-import movieValidate from "../../middlewares/validates/movie.validate";
-import { dvdsSchema, dvdSchema } from "../../schema";
+import { buyDvdController, createDvdsController } from "../../controller";
+import { getDvdController } from "../../controller";
+import { validateBody } from "../../middlewares/validates";
+import { buyDvdSchema, dvdsSchema } from "../../schema";
 
 const dvdsRouter = Router();
 
-dvdsRouter.post("", movieValidate(dvdSchema), createDvdsController);
+dvdsRouter.post("", validateBody(dvdsSchema), createDvdsController);
+dvdsRouter.get("", getDvdController);
+dvdsRouter.post("/buy/:dvdid", validateBody(buyDvdSchema), buyDvdController);
 
 export default dvdsRouter;
