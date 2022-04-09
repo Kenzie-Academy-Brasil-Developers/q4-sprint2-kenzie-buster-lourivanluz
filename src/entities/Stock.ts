@@ -18,7 +18,7 @@ export class Stock {
   @Column({ nullable: false, type: "float" })
   price: number;
 
-  @OneToOne(() => Movie, { nullable: false })
+  @OneToOne(() => Movie, { nullable: true })
   @JoinColumn()
-  move: string;
+  move: Movie;
 }

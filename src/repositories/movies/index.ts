@@ -12,8 +12,8 @@ class MovieRepo implements IMovieRepo {
     return newMovie;
   };
   reatriverMovies = async () => {
-    const userList = await this.ormRepo.find();
-    return userList;
+    const movieList = await this.ormRepo.find();
+    return movieList;
   };
   getMovieById = async (id: string) => {
     const [movie] = await this.ormRepo.find({ id: id });

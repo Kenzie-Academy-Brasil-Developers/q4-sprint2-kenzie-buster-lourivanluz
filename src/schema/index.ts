@@ -1,4 +1,4 @@
 import userSchema from "./user.schema";
-import movieSchema from "./movie.schema";
+import { dvdSchema, dvdsSchema } from "./dvd.schema";
 
-export { userSchema, movieSchema };
+export { userSchema, dvdSchema, dvdsSchema };

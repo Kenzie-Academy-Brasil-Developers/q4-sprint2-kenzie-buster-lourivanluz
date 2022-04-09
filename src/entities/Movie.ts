@@ -25,5 +25,5 @@ export class Movie {
 
   @OneToOne(() => Stock, { nullable: true })
   @JoinColumn()
-  stock: string;
+  stock: Stock;
 }
